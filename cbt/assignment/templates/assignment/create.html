@@ -1,0 +1,8 @@
+{% extends 'base.html' %} {% block content %}
+<form method="POST">
+    {% csrf_token %} {{ form.as_p|crispy }}
+    <!--Bult in method that turns the form been
+         pased as context into an html form rendered as paragraph-->
+    <button type="submit" class="btn btn-successs">Submit</button>
+</form>
+{% endblock %}

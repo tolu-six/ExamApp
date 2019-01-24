@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}{{block.super}}Create CBT Setup{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h3 class="mt-4">CBT SETUP</h3>
+    <form method="POST">
+        {% csrf_token %}
+            <div class="form-row">
+                <div class="form-group col-4 mb-0">
+                    {{ form.name|as_crispy_field }}
+                </div>
+                <div class="form-group col-4 mb-0">
+                        {{ form.category|as_crispy_field }}
+                </div>
+                {% comment %} <div class="form-group col-4 mb-0">
+                        {{ form.duration|as_crispy_field }}
+                </div> {% endcomment %}
+            </div>
+            <div class="form-row">
+                <div class="form-group col-3 mt-0">
+                    <label for="id_start_date" class="col-form-label  requiredField">
+                    Start Date<span class="asteriskField">*</span></label>
+                        {{ form.start_date }}
+                </div>
+                <div class="form-group col-3 mt-0">
+                        <label for="id_end_date" class="col-form-label  requiredField">
+                        End Date<span class="asteriskField">*</span></label>
+                            {{ form.end_date }}
+                </div>
+                <div class="form-group col-2 mb-0">
+                        {{ form.show_result|as_crispy_field }}
+                </div>
+                <div class="form-group col-2 mb-0">
+                    {{ form.show_instruction|as_crispy_field }}
+                </div>
+                <div class="form-group col-2 mb-0">
+                        {{ form.is_active|as_crispy_field }}
+                </div>
+            </div>
+            <div class="form-row">                            
+            <div class="form-group col-12 mb-0">
+                    {{ form.instruction|as_crispy_field }}
+            </div>
+        </div>
+        <div class="form-row justify-content-center">
+            <button type="submit" class="btn btn-success">Submit</button>
+        </div>    
+    
+    </form>
+</div>    
+
+{% endblock %}
+
+ <script>
+        $(function() {
+            $("#id_start_date").datetimepicker({
+                 format: 'LT'
+                 });
+            $("#id_end_date").datetimepicker({
+                 format: 'LT'
+                 });     
+        });
+    </script>
